@@ -195,7 +195,10 @@ Module Interpreters.
  * Define a function that sums the natural numbers up to (and including) n.
  *)
 Fixpoint sum_upto (n : nat) : nat :=
-  0. (* YOUR CODE HERE *)
+  match n with
+  | O => O
+  | S k => n + (sum_upto k)
+  end.
 
 (* Copied from Week 3 lecture code *)
 Definition eq_dec (A : Type) :=
@@ -301,7 +304,8 @@ Theorem sum_n_ok :
     lookup "input" v = Some input ->
     lookup "output" (eval_cmd sum_n v) = Some (sum_upto input).
 Proof.
-  (* YOUR CODE HERE *)
+  intros.
+  simpl.
 Admitted. (* Change to Qed when done. *)
 
 End Interpreters.
