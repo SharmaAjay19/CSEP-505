@@ -534,6 +534,9 @@ Definition counter2_safe (s : counter2_state) : Prop :=
  *)
 (* YOUR ANSWER HERE *)
 
+Inductive even : nat -> Prop :=
+| even_O : even O
+| even_SS : forall n, even n -> even (S (S n)).
 (*
  * PROBLEM 8 [8 points, ~25 tactics]
  *
