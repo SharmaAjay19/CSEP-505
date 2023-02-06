@@ -491,8 +491,11 @@ Lemma trc_back :
       R y z ->
       trc R x z.
 Proof.
-  (* YOUR CODE HERE *)
-Admitted. (* Change to Qed when done *)
+  intros A R x y Hxy z H.
+  induction Hxy.
+  - econstructor. apply H. apply trc_refl.
+  - econstructor. apply H0. eauto.
+Qed.
 
 (*
  * Here is a definition of a transition system that is similar to the "counter"
@@ -531,6 +534,9 @@ Definition counter2_safe (s : counter2_state) : Prop :=
  *)
 (* YOUR ANSWER HERE *)
 
+Inductive even : nat -> Prop :=
+| even_O : even O
+| even_SS : forall n, even n -> even (S (S n)).
 (*
  * PROBLEM 8 [8 points, ~25 tactics]
  *
